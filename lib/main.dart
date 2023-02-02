@@ -20,6 +20,7 @@ class BMICalculator extends StatelessWidget {
           primarySwatch: Colors.red,
           accentColor: Colors.purple,
         ),
+        iconTheme: const IconThemeData(color: Colors.white70),
         textTheme: const TextTheme(
           bodyMedium: TextStyle(
             color: Colors.white,
@@ -30,4 +31,3 @@ class BMICalculator extends StatelessWidget {
     );
   }
 }
-
