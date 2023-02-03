@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'widgets/constants.dart';
 import 'widgets/icon_content.dart';
 import 'widgets/reusable_card.dart';
 
-const double bottomContainerHeight = 80.0;
-const Color bottomContainerColor = Colors.purple;
-const Color activeCardColor = Color(0xFF1d1e33);
-const Color inActiveCardColor = Color(0xFF111328);
-
 enum Gender { male, female }
+
+double height = 180;
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -30,6 +28,7 @@ class _InputPageState extends State<InputPage> {
         title: const Text('BMI CALCULATOR'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
@@ -63,9 +62,43 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          const Expanded(
+          Expanded(
             child: ReusableCard(
               color: activeCardColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Height",
+                    style: labelTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        height.toStringAsFixed(2),
+                        style: numberTextStyle,
+                      ),
+                      const Text(
+                        "cm",
+                        style: labelTextStyle,
+                      ),
+                    ],
+                  ),
+                  Slider(
+                    value: height,
+                    min: minHieght,
+                    max: maxHieght,
+                    activeColor: activeSliderColor,
+                    inactiveColor: inActiveSliderColor,
+                    onChanged: (value) {
+                      setState(() => height = value);
+                    },
+                  )
+                ],
+              ),
             ),
           ),
           Expanded(
