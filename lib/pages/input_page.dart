@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/pages/widgets/reusable_input_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -7,7 +8,9 @@ import 'widgets/reusable_card.dart';
 
 enum Gender { male, female }
 
-double height = 180;
+double _heightValue = 180;
+int _weightValue = 60;
+int _ageValue = 18;
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -39,7 +42,7 @@ class _InputPageState extends State<InputPage> {
                         setState(() => setSelectedGender(Gender.male)),
                     cardChild: const IconContent(
                       iconData: FontAwesomeIcons.mars,
-                      text: "Male",
+                      text: "MALE",
                     ),
                     color: selectedGender == Gender.male
                         ? activeCardColor
@@ -52,7 +55,7 @@ class _InputPageState extends State<InputPage> {
                         setState(() => setSelectedGender(Gender.female)),
                     cardChild: const IconContent(
                       iconData: FontAwesomeIcons.venus,
-                      text: "Female",
+                      text: "FEMALE",
                     ),
                     color: selectedGender == Gender.female
                         ? activeCardColor
@@ -69,7 +72,7 @@ class _InputPageState extends State<InputPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    "Height",
+                    "HEIGHT",
                     style: labelTextStyle,
                   ),
                   Row(
@@ -78,7 +81,7 @@ class _InputPageState extends State<InputPage> {
                     textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
-                        height.toStringAsFixed(2),
+                        _heightValue.toStringAsFixed(2),
                         style: numberTextStyle,
                       ),
                       const Text(
@@ -88,10 +91,10 @@ class _InputPageState extends State<InputPage> {
                     ],
                   ),
                   Slider(
-                    value: height,
+                    value: _heightValue,
                     min: minHieght,
                     max: maxHieght,
-                    onChanged: (value) => setState(() => height = value),
+                    onChanged: (value) => setState(() => _heightValue = value),
                   )
                 ],
               ),
@@ -99,12 +102,18 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: Row(
-              children: const [
-                Expanded(child: ReusableCard(color: activeCardColor)),
-                Expanded(
-                  child: ReusableCard(
-                    color: activeCardColor,
-                  ),
+              children: [
+                ReusableInputCard(
+                  text: "Weight",
+                  value: _weightValue,
+                  onMinusPressed: () => setState(() => _weightValue--),
+                  onPlusPressed: () => setState(() => _weightValue++),
+                ),
+                ReusableInputCard(
+                  text: "Age",
+                  value: _ageValue,
+                  onMinusPressed: () => setState(() => _ageValue--),
+                  onPlusPressed: () => setState(() => _ageValue++),
                 ),
               ],
             ),
@@ -116,6 +125,26 @@ class _InputPageState extends State<InputPage> {
           )
         ],
       ),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  final IconData icon;
+  final void Function() onPressed;
+
+  const RoundIconButton(
+      {super.key, required this.icon, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      elevation: 6,
+      constraints: const BoxConstraints.tightFor(width: 50, height: 50),
+      shape: const CircleBorder(),
+      fillColor: const Color(0xFF4C4F5E),
+      onPressed: onPressed,
+      child: Icon(icon),
     );
   }
 }
