@@ -118,10 +118,18 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: bottomContainerColor,
-            height: bottomContainerHeight,
-            margin: const EdgeInsets.only(top: 10),
+          GestureDetector(
+            child: Container(
+              alignment: Alignment.center,
+              color: bottomContainerColor,
+              height: bottomContainerHeight,
+              margin: const EdgeInsets.only(top: 10),
+              child: const Text(
+                "Get Results",
+                style: numberTextStyle,
+              ),
+            ),
+            onTap: () => Navigator.pushNamed(context, "results"),
           )
         ],
       ),
