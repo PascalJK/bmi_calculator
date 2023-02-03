@@ -35,32 +35,29 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () => setState(() => setSelectedGender(Gender.male)),
-                    child: ReusableCard(
-                      cardChild: const IconContent(
-                        iconData: FontAwesomeIcons.mars,
-                        text: "Male",
-                      ),
-                      color: selectedGender == Gender.male
-                          ? activeCardColor
-                          : inActiveCardColor,
+                  child: ReusableCard(
+                    onTapped: () =>
+                        setState(() => setSelectedGender(Gender.male)),
+                    cardChild: const IconContent(
+                      iconData: FontAwesomeIcons.mars,
+                      text: "Male",
                     ),
+                    color: selectedGender == Gender.male
+                        ? activeCardColor
+                        : inActiveCardColor,
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () =>
+                  child: ReusableCard(
+                    onTapped: () =>
                         setState(() => setSelectedGender(Gender.female)),
-                    child: ReusableCard(
-                      cardChild: const IconContent(
-                        iconData: FontAwesomeIcons.venus,
-                        text: "Female",
-                      ),
-                      color: selectedGender == Gender.female
-                          ? activeCardColor
-                          : inActiveCardColor,
+                    cardChild: const IconContent(
+                      iconData: FontAwesomeIcons.venus,
+                      text: "Female",
                     ),
+                    color: selectedGender == Gender.female
+                        ? activeCardColor
+                        : inActiveCardColor,
                   ),
                 ),
               ],
