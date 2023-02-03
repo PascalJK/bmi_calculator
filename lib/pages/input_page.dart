@@ -91,11 +91,7 @@ class _InputPageState extends State<InputPage> {
                     value: height,
                     min: minHieght,
                     max: maxHieght,
-                    activeColor: activeSliderColor,
-                    inactiveColor: inActiveSliderColor,
-                    onChanged: (value) {
-                      setState(() => height = value);
-                    },
+                    onChanged: (value) => setState(() => height = value),
                   )
                 ],
               ),

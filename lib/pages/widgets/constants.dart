@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 const Color bottomContainerColor = Colors.purple;
 const Color activeCardColor = Color(0xFF1d1e33);
 const Color inActiveCardColor = Color(0xFF111328);
-const Color activeSliderColor = Color(0xFFEB1555);
+const Color activeSliderColor = Colors.white;
 const Color inActiveSliderColor = Color(0xFF8D8E98);
+const Color sliderThumbColor = Color(0xFFEB1555);
 
 const double bottomContainerHeight = 80.0;
 const double iconSize = 80.0;
