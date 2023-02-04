@@ -16,3 +16,10 @@ const double maxHieght = 220.0;
 const labelTextStyle = TextStyle(fontSize: 18, color: Color(0xFF8D8e98));
 const numberTextStyle = TextStyle(
     fontSize: 50, fontWeight: FontWeight.w900, color: Color(0xFF8D8e98));
+const largeButtonTextStyle = TextStyle(
+    fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xFF8D8e98));
+const resultTextStyle = TextStyle(
+    fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xFF24D876));
+const kBMITextStyle = TextStyle(
+    fontSize: 100, fontWeight: FontWeight.bold, color: Color(0xFF8D8e98));
+const bodyTextStyle = TextStyle(fontSize: 22, color: Color(0xFF8D8e98));
