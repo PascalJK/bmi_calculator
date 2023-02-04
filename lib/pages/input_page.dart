@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/core/calculator_brain.dart';
 import 'package:bmi_calculator/pages/widgets/reusable_input_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -82,7 +83,7 @@ class _InputPageState extends State<InputPage> {
                     textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
-                        _heightValue.toStringAsFixed(2),
+                        _heightValue.toStringAsFixed(1),
                         style: numberTextStyle,
                       ),
                       const Text(
@@ -121,11 +122,14 @@ class _InputPageState extends State<InputPage> {
           ),
           ReusableBottomButton(
             text: "Calculate",
-            onPressed: () => Navigator.pushNamed(context, "results"),
+            onPressed: () {
+              var calc = CalculatorBrain(_heightValue, _weightValue);
+              calc.calculateBMI();
+              Navigator.pushNamed(context, "results");
+            },
           )
         ],
       ),
     );
   }
 }
-
